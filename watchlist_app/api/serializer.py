@@ -15,6 +15,6 @@ class MovieSerializer(serializers.Serializer):
         instance.description = validated_data.get('description',instance.description)
         instance.active = validated_data.get('active',instance.active)
         instance.save()
-        return instance
+        return instances
     
     
