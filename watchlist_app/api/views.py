@@ -51,7 +51,7 @@ class MovieList(APIView):
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status = status.HTTP_201_CREATED)
-        return Response("invaled data" , status = status.HTTP_400_BAD_REQUEST)
+        return Response( serializer.errors,status = status.HTTP_400_BAD_REQUEST)
     
     
 class MovieDetail(APIView):
@@ -66,7 +66,7 @@ class MovieDetail(APIView):
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data , status= status.HTTP_201_CREATED)
-        return Response("invalid Data" , status= status.HTTP_400_BAD_REQUEST)
+        return Response(serializer.errors  , status= status.HTTP_400_BAD_REQUEST)
     
     def delete(self , request, id):
         movie = Movie.objects.get(id=id)
